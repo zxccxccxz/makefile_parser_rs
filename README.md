@@ -11,9 +11,9 @@ The parser accepts a valid Makefile and splits it as follows:
 * Comments
 * Variable declarations
 * Rules
-** Target
-** Dependencies
-** Commands
+    * Target
+    * Dependencies
+    * Commands
 
 ## Grammar
 ```
