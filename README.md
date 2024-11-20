@@ -43,7 +43,7 @@ dependencies	= { target ~ (" " ~ target)* }
 
 commands			=  { (command ~ NEWLINE)* ~ command }
 command_variable	= @{ "$(" ~ variable ~ ")" }
-command_flag		=  { "-" ~ "-"? ~ ASCII_ALPHANUMERIC+ }
+command_flag		=  { "-" ~ (ASCII_ALPHANUMERIC | "-")+ }
 command_arg			=  { !"-" ~ variable+ }
 
 command = {

@@ -14,7 +14,7 @@ clippy:
 	cargo clippy --tests
 
 fix:
-	cargo fix -all
+	cargo clippy --fix --lib -p makefile_parser_rs --allow-dirty
 
 fmt:
 	cargo fmt --all

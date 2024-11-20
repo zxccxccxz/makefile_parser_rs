@@ -1,6 +1,6 @@
 use anyhow::Result;
-use makefile_parser_rs::Makefile;
 use clap::{Parser, Subcommand};
+use makefile_parser_rs::Makefile;
 
 #[derive(Parser)]
 #[command(
@@ -37,12 +37,12 @@ fn main() -> Result<()> {
         Commands::Parse { file } => {
             let makefile = Makefile::parse_file(file)?;
             println!("{makefile}");
-        },
+        }
         Commands::About => {
             println!("Makefile parser rs");
             println!("Verison: 0.1.0");
             println!("Made by: Volodymyr Rastiehaiev <volodymyr.rastiehaiev@ukma.edu.ua>");
-        },
+        }
         Commands::Help => {
             println!("Makefile parser rs");
             println!("\nUSAGE:");

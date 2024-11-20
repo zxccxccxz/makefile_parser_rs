@@ -42,13 +42,13 @@ pub(super) fn extract_rule(pair: PestPair<'_, Rule>) -> MakefileRule {
                         .dependencies
                         .push(dependency.as_str().to_string());
                 }
-            },
+            }
             Rule::commands => {
                 for command in extract_commands(inner) {
                     makefile_rule.commands.push(command);
                 }
                 return makefile_rule;
-            },
+            }
             _ => {}
         }
     }

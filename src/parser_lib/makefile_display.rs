@@ -4,14 +4,14 @@ impl std::fmt::Display for Makefile {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         writeln!(f, "Makefile:")?;
         // Variables
-        if self.variables.len() > 0 {
+        if !self.variables.is_empty() {
             writeln!(f, "|  Variables:")?;
         }
         for (name, value) in &self.variables {
             writeln!(f, "|  |  {name}: {value}")?;
         }
         // Comments
-        if self.comments.len() > 0 {
+        if !self.comments.is_empty() {
             writeln!(f, "|  Comments:")?;
         }
         for comment in &self.comments {
@@ -21,13 +21,13 @@ impl std::fmt::Display for Makefile {
         for rule in &self.rules {
             writeln!(f, "|  Rule:")?;
             writeln!(f, "|  |  Target: {}", rule.target)?;
-            if rule.dependencies.len() > 0 {
+            if !rule.dependencies.is_empty() {
                 writeln!(f, "|  |  Dependencies:")?;
             }
             for dependency in &rule.dependencies {
                 writeln!(f, "|  |  |  {dependency}")?;
             }
-            if rule.commands.len() > 0 {
+            if !rule.commands.is_empty() {
                 writeln!(f, "|  |  Commands:")?;
             }
             for command in &rule.commands {
