@@ -1,5 +1,7 @@
 # makefile_parser_rs
 
+[<img alt="crates.io" src="https://img.shields.io/crates/v/makefile_parser_rs?logo=rust" height="20">](https://crates.io/crates/makefile_parser_rs)
+
 ## Description
 Built with Rust, `makefile_parser_rs` is a library main task of which is to parse Makefiles.
 It supports detecting declared variables and substituting them to commands where they are used.
