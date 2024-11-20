@@ -1,0 +1,11 @@
+# This is a simple Makefile
+
+CC = gcc
+CFLAGS = -Wall
+
+main: main.cpp my_class.cpp
+    clang++ -Wall -o main main.cpp my_class.cpp
+    $(CC) $(CFLAGS) -o some_target dependency1 dependency2
+
+another_target: dependency3
+    @echo "Building another target"

@@ -1,0 +1,39 @@
+makefile	=  { line* }
+line		=  { (variable_assignment | comment | rule)? ~ NEWLINE }
+comment		=  { whitespace* ~ "#" ~ (ASCII_ALPHANUMERIC | (!NEWLINE ~ ANY))* }
+
+variable	=  { (ASCII_ALPHANUMERIC | "_" | "." | "-" | "+" | "%" | "^" | "&")+ }
+value		= @{ ("-" | "--")? ~ (string | variable)? }
+
+variable_assignment = {
+	variable
+	~
+	whitespace*
+	~
+	("=" | ":=" | "?=")
+	~
+	whitespace*
+	~
+	value
+}
+
+rule = {
+	target ~ ":" ~ (" " ~ dependencies)? ~ NEWLINE ~ commands
+}
+
+target			= { (ASCII_ALPHANUMERIC | "_" | ".")+ }
+dependencies	= { target ~ (" " ~ target)* }
+
+commands			=  { (command ~ NEWLINE)* ~ command }
+command_variable	= @{ "$(" ~ variable ~ ")" }
+command_flag		=  { "-" ~ "-"? ~ ASCII_ALPHANUMERIC+ }
+command_arg			=  { !"-" ~ variable+ }
+
+command = {
+	whitespace+
+	~
+	(whitespace+ | command_arg | string | command_variable | command_flag)+
+}
+
+string		= @{ "\"" ~ (!"\"" ~ ANY)* ~ "\"" }
+whitespace	= _{ " " | "\t" | "\r" }
